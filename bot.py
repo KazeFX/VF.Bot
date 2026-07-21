@@ -1,9 +1,8 @@
 import discord
 import requests
-import api_keys
 import database_helper
 from discord.ext import commands, tasks
-from api_keys import BOT_TOKEN, BOT_TRAP_CHANNEL_ID
+from api_tokens import BOT_TOKEN, BOT_TRAP_CHANNEL_ID
 
 intents = discord.Intents.default()
 intents.members = True # Required to receive member join events
@@ -28,7 +27,6 @@ async def on_message(message):
             print(f"Failed to ban user: {e}")
 
     await bot.process_commands(message)
-
 
 
 bot.run(BOT_TOKEN)
