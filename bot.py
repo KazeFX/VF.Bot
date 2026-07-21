@@ -1,5 +1,6 @@
 import discord
 import requests
+import api_keys
 import database_helper
 from discord.ext import commands, tasks
 from api_keys import BOT_TOKEN, BOT_TRAP_CHANNEL_ID
