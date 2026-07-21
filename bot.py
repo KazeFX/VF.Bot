@@ -6,12 +6,22 @@ from api_tokens import BOT_TOKEN, BOT_TRAP_CHANNEL_ID
 
 intents = discord.Intents.default()
 intents.members = True # Required to receive member join events
-bot = commands.Bot(command_prefix='!', intents=discord.Intents.all(), help_command=None)
+bot = commands.Bot(command_prefix='!', intents=discord.Intents.all())
 
 
 @bot.event
 async def on_ready():
     print("VF.Bot logged in!")
+
+
+# Prints a welcome message to new members joining the sever; in a channel called welcome
+@bot.event
+async def on_member_join(member):
+    channel_name = "väntrummet"  # replace with your channel name
+    for ch in member.guild.text_channels:
+        if ch.name == channel_name:
+            await ch.send(f"Välkommen till Virtua Fighter SE, {member.mention} !")
+            break
 
 
 @bot.event
